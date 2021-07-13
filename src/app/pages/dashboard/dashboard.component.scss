@@ -1,0 +1,39 @@
+.imgBackground {
+  height: calc(100vh - 370px);
+  width:100%;
+}
+
+.modal-content .modal-body + .modal-footer {
+  padding:10px 10px;
+}
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
+}
+
+a :hover {
+  cursor: pointer;
+  color: #fd5d93;
+}
+
+hr {
+  background-color: white;
+}
+
+.modal-content .modal-footer {
+  border-top: 2px solid #e9ecef;
+  justify-content: center;
+  padding-top: 10px 10px;
+
+}
+
+.carousel-indicators {
+  z-index: 0;
+}

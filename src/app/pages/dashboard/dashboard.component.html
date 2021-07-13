@@ -1,0 +1,134 @@
+
+<div class=" content">
+  <div class="row">
+    <img src="../../../assets/img/dora_home.jpg" class="imgBackground" />
+  </div>
+  <br /><br /><br />
+  <h3><center>Courses offered</center></h3>
+  <br />
+
+  <div class="spinner-grow text-light" *ngIf="this.isLoading" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+
+
+  <div class="row">
+    <div *ngFor="let course of courses" class=" col-md-4">
+      <!-- Card Light -->
+      <div class="card">
+
+        <!-- Card image -->
+        <div class="view overlay">
+          <img class="card-img-top"
+               src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%28131%29.jpg" alt="Card image cap">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+        <!-- Card content -->
+        <div class="card-body">
+
+          <!-- Social shares button -->
+<!--          <a class="activator waves-effect waves-light mr-4" style="float: right"><i class="fas fa-share-alt"></i></a>-->
+          <!-- Title -->
+          <h4 class="card-title">{{ course.title}}</h4>
+          <hr>
+          <!-- Text -->
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+          <!-- Link -->
+          <a (click)="openBackDropCustomClass(content, course)" class="black-text d-flex justify-content-end">
+            <h5>Read more <i class="fas fa-angle-double-right"></i></h5>
+          </a>
+        </div>
+      </div>
+      <!-- Card Light -->
+    </div>
+  </div>
+
+
+  <br /><br /><hr />
+  <h3 style="margin-bottom: 0px"><center>Reviews</center></h3>
+  <br />
+  <div class="row">
+    <div *ngFor="let course of courses" class=" col-md-3">
+      <figure class="snip1515">
+        <div class="profile-image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample47.jpg" alt="sample47" /></div>
+        <figcaption>
+          <h3>Fleece Marigold</h3>
+          <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+          <hr />
+          <p> Rating : <b>5</b> </p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <br />
+  <center><a (click)="navigateToReviews()">
+    <h4>>>Read more<<</h4>
+  </a></center>
+
+
+
+
+
+
+
+
+
+
+  <ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">{{this.activeCourse.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-8">
+              <ngb-carousel *ngIf="this.images">
+                <ng-template ngbSlide *ngFor="let image of images">
+                  <div class="picsum-img-wrapper">
+                    <img [src]="image" alt="Random slide">
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+        </div>
+        <div class="col-sm-4">
+          <h4 style="color: black">Description</h4>
+          <p>{{ this.activeCourse.description }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-template>
+
+
+  <br /><br /><hr />
+  <h3 style="margin-bottom: 0px"><center>Real stories</center></h3>
+  <br />
+  <div class="ratio ratio-21x9">
+<!--    <embed autostart="true"-->
+<!--      src="./assets/demo/videoplayback.mp4"-->
+<!--      title="reviews video"-->
+<!--      allowfullscreen-->
+<!--    ></embed>-->
+<!--    <embed src="./assets/demo/videoplayback.mp4" style="width: 50%; height:300px" autoplay=false type="video/mp4" />-->
+    <div class="row">
+      <div class="col-sm-6">
+        <video controls preload="none" style="width: 100%; height:300px">
+        <source src="./assets/demo/videoplayback.mp4" type="video/mp4">
+        Your browser
+      </video>
+      </div>
+      <div class="col-sm-6">
+        <video controls preload="none" style="width: 100%; height:300px">
+          <source src="./assets/demo/videoplayback.mp4" type="video/mp4">
+          Your browser
+        </video>
+      </div>
+  </div>
+</div>

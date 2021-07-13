@@ -1,0 +1,161 @@
+
+<div class=" content">
+  <br /><br />
+
+  <div class="row">
+    <div class="reviews_top">
+      <div class="row">
+        <div class="col-sm-6 left_div">
+          <div class="row">
+            <div class="col-sm-6 text_color">
+              <p class="tdc-custom-h1"> {{ this.overAllRating }} </p>
+              <h4> Based on {{ this.users.length }} reviews </h4>
+            </div>
+            <div class="col-sm-6">
+              <ul class="rating-details">
+                <li >
+                  <img src="./assets/img/icons/5star.png" width="25" height="25" class="lazy no-lazy lazy-loaded"
+                       alt="s" style="display: block; float: left" />
+                  &#160; &#160; <h2><span></span></h2> &#160; &#160;
+                  <div style="float: right; font-size: 1.5em">{{ this.calcRatingsCount['5'] }}</div>
+                </li>
+                <li>
+                  <img src="./assets/img/icons/4star.png" width="25" height="25" class="lazy no-lazy lazy-loaded"
+                       alt="s" style="display: block; float: left" />
+                  &#160; &#160; <h2><span></span></h2> &#160; &#160;
+                  <div style="float: right; font-size: 1.5em">{{ this.calcRatingsCount['4'] }}</div>
+                </li>
+                <li>
+                  <img src="./assets/img/icons/3star.png" width="25" height="25" class="lazy no-lazy lazy-loaded"
+                       alt="s" style="display: block; float: left" />
+                  &#160; &#160; <h2><span></span></h2> &#160; &#160;
+                  <div style="float: right; font-size: 1.5em">{{ this.calcRatingsCount['3'] }}</div>
+                </li>
+                <li>
+                  <img src="./assets/img/icons/2star.png" width="25" height="25" class="lazy no-lazy lazy-loaded"
+                       alt="s" style="display: block; float: left" />
+                  &#160; &#160; <h2><span></span></h2> &#160; &#160;
+                  <div style="float: right; font-size: 1.5em">{{ this.calcRatingsCount['2'] }}</div>
+                </li>
+                <li>
+                  <img src="./assets/img/icons/1star.png" width="25" height="25" class="lazy no-lazy lazy-loaded"
+                       alt="s" style="display: block; float: left" />
+                  &#160; &#160; <h2><span></span></h2> &#160; &#160;
+                  <div style="float: right; font-size: 1.5em">{{ this.calcRatingsCount['1'] }}</div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="col-sm-2"></div>
+          <div class="col-sm-10">
+            <button
+              class=" btn btn-danger btn-block"
+              (click)="showRatingModal(contentReview)"
+            >
+              Rate your experience
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br /><br /><br />
+
+  <h3><center>Customer Reviews</center></h3>
+  <br />
+  <div class="row">
+    <div *ngFor="let user of this.users" class=" col-md-4">
+      <figure class="snip1515">
+        <div class="profile-image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample47.jpg" alt="sample47" /></div>
+        <figcaption>
+          <h3>{{ user.user_name}}</h3>
+          <br />
+          <p> {{ user.rating.comment}}</p>
+          <hr />
+          <p> Rating: {{ user.rating.rating }} </p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+
+
+
+
+
+
+  <ng-template #contentReview let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title">Enter your review</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modalClose()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+          <div class="col-sm-2"></div>
+           <div class="col-sm-8">
+             <div class="md-form">
+               <input type="text" style="color:black" id="userName" [(ngModel)]=" this.user.user_name" class="form-control">
+               <label for="userName">Name</label>
+             </div>
+           </div>
+           <div class="col-sm-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <div class="md-form">
+            <input type="text" style="color:black" id="userEmail" [(ngModel)]="this.user.user_mail" class="form-control">
+            <label for="userEmail">Email</label>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <div class="form-outline">
+            <textarea class="form-control" style="color:black" [(ngModel)]="this.user.rating.comment" id="userComment" rows="5" [required]="true"></textarea>
+            <label class="form-label" for="userComment">Comment</label>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5" class="uploadButton">
+          <input type="file" name="file" id="file" (change)="onFileChanged($event)" class="input-file">
+          <label for="file" class="btn btn-link js-labelFile">
+            <div class="js-fileName">
+              <i class="icon fa fa-check" style="float: left; padding-right: 5px"></i>
+              <span>Upload your picture</span>
+            </div>
+          </label>
+        </div>
+        <div class="col-sm-3">
+          <div class="file-field">
+            <div class="mb-4">
+              <img src="{{ this.imgURL}}"
+                   style="max-width: 100%; height: 70px; width: 100%"
+                   class="z-depth-1-half avatar-pic" alt="example placeholder avatar">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modalClose()">Close</button>
+      <button type="button" class="btn btn-success" (click)="onSubmit()">Submit</button>
+    </div>
+  </ng-template>
+</div>
+
+
+
+
+
